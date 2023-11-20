@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-const PuppyList = () => {
+const PuppyList = ({setShowDetails, setSelectedPuppy}) => {
   const [allPuppies, setAllPuppies] = useState([]);
+
   useEffect(() => {
     const fetchPuppy = async () => {
       try {
@@ -11,6 +12,7 @@ const PuppyList = () => {
         const result = await response.json();
         const fetchedPuppies = result.data.players;
         setAllPuppies(fetchedPuppies);
+        console.log(fetchedPuppies);
       } catch (error) {
         console.error("Error fetching puppies:", error);
       }
@@ -18,11 +20,17 @@ const PuppyList = () => {
     fetchPuppy();
   }, []);
 
+  const handlePuppyClick = (puppy) => {
+    setShowDetails(true);
+    setSelectedPuppy(puppy);
+  };
+
+
   return (
     <>
       <h1>Puppy List</h1>
       {allPuppies.map((puppy) => (
-        <div key={puppy.id}>{puppy.name}</div>
+        <div onClick = {() => handlePuppyClick(puppy)}  key={puppy.id}>{puppy.name}</div>
       ))}
     </>
   );
