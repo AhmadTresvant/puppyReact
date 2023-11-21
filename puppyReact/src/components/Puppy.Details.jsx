@@ -7,7 +7,7 @@ return (
    <h1>{selectedPuppy.name}</h1>
    <p>breed:{selectedPuppy.breed}</p>
    <p>status:{selectedPuppy.status}</p>
-   <img src={selectedPuppy.imageUrl} alt="" />
+   <img src={selectedPuppy.imageUrl} height = '300px' width ='300px' alt="" />
    </div>
   </>
 );

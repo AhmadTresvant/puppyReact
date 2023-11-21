@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const PuppyList = ({setShowDetails, setSelectedPuppy}) => {
+const PuppyList = ({ setShowDetails, setSelectedPuppy }) => {
   const [allPuppies, setAllPuppies] = useState([]);
 
   useEffect(() => {
@@ -25,13 +25,22 @@ const PuppyList = ({setShowDetails, setSelectedPuppy}) => {
     setSelectedPuppy(puppy);
   };
 
-
   return (
     <>
       <h1>Puppy List</h1>
+     <div className="bigContainer">
       {allPuppies.map((puppy) => (
-        <div onClick = {() => handlePuppyClick(puppy)}  key={puppy.id}>{puppy.name}</div>
-      ))}
+        <div
+          className="container"
+          onClick={() => handlePuppyClick(puppy)}
+          key={puppy.id}
+        >
+          <div>
+            <h3>{puppy.name}</h3>
+            <img src={puppy.imageUrl} height="100px" width="100px" alt="" />
+          </div>
+        </div>
+      ))}</div>
     </>
   );
 };
